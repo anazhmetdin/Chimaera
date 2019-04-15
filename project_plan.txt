@@ -1,0 +1,9 @@
+Dr. Tamer's description:
+
+  - Extracting discordant paired end reads
+  - Extracting reads with multiple mismatches of linear alignment
+  - Extracting reads with supplementary alignment that are correlated with structural defects
+  
+  - Based on the results of the above three points:
+    - If those reads are supported by enough evidence, higher than an arbitrary threshold, we would perform
+    QC on those reads to decide if the refrence needs to be updated or the reads should be discarded.
