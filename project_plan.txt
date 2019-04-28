@@ -16,7 +16,7 @@ Action plan:
 Negm's part:
   
   - Extracting reads with supplementary alignment that are correlated with structural defects:
-      Parcing SAM/BAM files with Samtools, [bash script], to extract reads with falgs satisfying Q9 and/or Q12.
+      Parcing SAM/BAM files with Samtools, [bash script], to extract reads with falgs satisfying Q12.
   
   - Storing those reads in a suitable data structure [c++ code]:
       hash table would be in the size of the primary reads. Each read would be converted from a string to an integer, then, 
