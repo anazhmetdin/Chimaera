@@ -8,6 +8,7 @@ class read{
 private:
   string Qname;
   string Rname;
+  int flag;
   int pos;
   int mapQ;
   int len;
