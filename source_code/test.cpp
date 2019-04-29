@@ -1,5 +1,7 @@
 #include <iostream>
 #include <fstream>
+#include <string>
+#include "read_class.h"
 using namespace std;
 
 int main(){
@@ -46,5 +48,14 @@ else {
   std::cerr << "Unable to open file\n";
 }
 
+
+/*
+Testing read_class
+*/
+read readt;
+cout<<readt.getLen()<<endl;
+
+readt.setLen(21);
+cout<<readt.getLen()<<endl;
   return 0;
 }
