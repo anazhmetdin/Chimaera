@@ -1,5 +1,6 @@
 #ifndef READ_CLASS_H
 #define READ_CLASS_H
+#include <string>
 using namespace std;
 
 class read{
@@ -7,6 +8,7 @@ class read{
 private:
   string Qname;
   string Rname;
+  int flag;
   int pos;
   int mapQ;
   int len;
