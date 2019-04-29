@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include "hashT.h"
 #include "read_class.h"
 using namespace std;
 
