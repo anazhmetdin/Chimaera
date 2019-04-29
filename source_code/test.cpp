@@ -57,5 +57,22 @@ cout<<readt.getLen()<<endl;
 
 readt.setLen(21);
 cout<<readt.getLen()<<endl;
+
+
+/*
+test string split
+*/
+string line = "scott\ttiger\tmushroom\twwe\tdZZ";
+cout<<line<<endl;
+string delimiter = "\t";
+string token;
+int pos;
+while ((pos = line.find(delimiter)) != -1) {
+    token = line.substr(0, pos);
+    std::cout << token << std::endl;
+    line.erase(0, pos + delimiter.length());
+}
+std::cout << line << std::endl;
+
   return 0;
 }
