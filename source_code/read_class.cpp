@@ -3,7 +3,7 @@
 
 using namespace std;
 
-read::read(string Qname="*", string Rname="*", int pos=0, int len=0int, mapQ=255,){
+read::read(string Qname, string Rname, int pos, int len, int mapQ){
   this->Qname = Qname;
   this->Rname = Rname;
   this->pos = pos;
