@@ -9,12 +9,23 @@ int main(int argc, char** argv){
 ifstream test_file(argv[1], ios::in);
 
 if (test_file.is_open()) {
-  string line;
+
+  string delimiter = "\t";
+  string token,line;
+  int pos;
   while (getline(test_file, line)) {
-    cout << line << '\n';
+
+    while ((pos = line.find(delimiter)) != -1) {
+        token = line.substr(0, pos);
+        cout << token << endl;
+        line.erase(0, pos + delimiter.length());
+    }
+    cout << line << endl;
   }
+
   test_file.close();
 }
+
 else {
   std::cerr << "Unable to open file\n";
 }
