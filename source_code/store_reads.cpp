@@ -47,14 +47,6 @@ if (test_file.is_open()) {
         field_counter++;
     }
 
-    cout<< dump_read.getLen() << endl;
-    cout<< dump_read.getPos() << endl;
-    cout<< dump_read.getFlag() << endl;
-    cout<< dump_read.getMapQ() << endl;
-    cout<< dump_read.getLen() << endl;
-    cout<< dump_read.getQname() << endl;
-    cout<< dump_read.getRname() << endl;
-
   }
 
   test_file.close();
