@@ -26,20 +26,20 @@ if (test_file.is_open()) {
         if(field_counter==0){
           dump_read.setQname(token);
         }
-        if(field_counter==1){
+        else if(field_counter==1){
           dump_read.setFlag(stoi(token));
         }
-        if(field_counter==2){
+        else if(field_counter==2){
           dump_read.setRname(token);
         }
-        if(field_counter==3){
+        else if(field_counter==3){
           dump_read.setPos(stoi(token));
         }
-        if(field_counter==4){
+        else if(field_counter==4){
           dump_read.setMapQ(stoi(token));
         }
-        if(field_counter==8){
-          dump_read.setMapQ(stoi(token));
+        else if(field_counter==5){
+          dump_read.setLen(stoi(token));
           break;
         }
 
