@@ -9,12 +9,11 @@ class table{
 
 private:
   int size;
-  linked*** sup_reads;
+  linked** sup_reads;
 
 public:
   table();
-  void hashF(read r_instance, int num_rep_reads);
-  void add_read(read r_instance, int ind, int num_rep_reads);
+  void hashF(read r_instance);
 
 };
 
