@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 #include "read_class.h"
+#include "table.h"
 using namespace std;
 
 read store_read(string line);
@@ -14,11 +15,13 @@ ifstream test_file(argv[1], ios::in);
 if (test_file.is_open()) {
 
   string line;
+  table file_table;
 
   while (getline(test_file, line)) {
 
       read line_read = store_read(line);
-      cout<<line_read.getQname()<<endl;
+      strin
+      file_table.hashF(line_read);
 
   }
 
