@@ -14,7 +14,7 @@ private:
 public:
   table();
   void hashF(read r_instance, int num_rep_reads);
-  void add_read(read r_instance);
+  void add_read(read r_instance, int ind, int num_rep_reads);
 
 };
 
