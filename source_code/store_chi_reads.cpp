@@ -3,9 +3,11 @@
 #include <fstream>
 #include "read_class.h"
 #include "table.h"
+#include <stdlib.h>
 using namespace std;
 
 read store_read(string line);
+int get_num_repr_reads();
 
 int main(int argc, char** argv){
 
@@ -20,8 +22,16 @@ if (test_file.is_open()) {
   while (getline(test_file, line)) {
 
       read line_read = store_read(line);
-      strin
-      file_table.hashF(line_read);
+
+      string Qname = read.getQname;
+
+      string cmd = "./get_num_repr_chim_line.sh " + Qname + " " + argv[1];
+
+      system(cmd.c_str());
+
+      int num_repr_reads = get_num_repr_reads();
+
+      file_table.hashF(line_read, num_repr_reads);
 
   }
 
@@ -34,6 +44,8 @@ else {
 
   return 0;
 }
+
+
 
 
 read store_read(string line){
@@ -71,4 +83,26 @@ read store_read(string line){
       field_counter++;
   }
   return dump_read;
+}
+
+
+
+
+int get_num_repr_reads(){
+
+  int num_repr_reads;
+
+ifstream one_read("num_rep_reads.txt", ios::in);
+if (one_read.is_open()) {
+  string line;
+  while (getline(one_read, line)) {
+    num_repr_reads = stoi(line);
+  }
+  one_read.close();
+}
+else {
+  std::cerr << "Unable to open file\n";
+}
+
+  return num_repr_reads;
 }
