@@ -11,26 +11,30 @@ read store_read(string line);
 
 int main(int argc, char** argv){
 
-ifstream test_file(argv[1], ios::in);
-
-if (test_file.is_open()) {
-
-  string line;
   table file_table;
 
-  while (getline(test_file, line)) {
+  ifstream test_file(argv[1], ios::in);
 
-      read line_read = store_read(line);
+  if (test_file.is_open()) {
 
-      file_table.hashF(line_read);
-    }
+    string line;
 
-  test_file.close();
-}
+    while (getline(test_file, line)) {
 
-else {
-  cerr << "Unable to open file\n";
-}
+        read line_read = store_read(line);
+
+        file_table.hashF(line_read);
+      }
+
+    test_file.close();
+  }
+
+  else {
+    cerr << "Unable to open file\n";
+  }
+
+  file_table.check_support();
+  file_table.report_support();
 
   return 0;
 }
