@@ -39,9 +39,8 @@
 
 class Perfect_Hash
 {
-private:
-  static inline unsigned int hash (const char *str, size_t len);
 public:
+  static inline unsigned int hash (const char *str, size_t len);
   static const char *in_word_set (const char *str, size_t len);
 };
 
