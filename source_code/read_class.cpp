@@ -9,6 +9,7 @@ read::read(string Qname, string Rname, int flag, int pos, int len, int mapQ){
   this->pos = pos;
   this->len = len;
   this->mapQ = mapQ;
+  this->flag = flag;
 }
 
 void read::setQname(string Qname){this->Qname = Qname;}
@@ -37,5 +38,5 @@ int read::getMapQ(){return mapQ;}
 int read::getLen(){return len;}
 
 string read::printRead(){
-  return this->Qname + "\t" + this->flag + "\t" + this->Rname + "\t" + this->pos + "\t" + this->mapQ + "\t" + this->len + "\n";
+  return this->Qname + "\t" + to_string(this->flag) + "\t" + this->Rname + "\t" + to_string(this->pos) + "\t" + to_string(this->mapQ) + "\t" + to_string(this->len) + "\n";
 }

@@ -50,4 +50,6 @@ int main(){
   }
   }
 
+  whtevrT.report_support();
+
 }

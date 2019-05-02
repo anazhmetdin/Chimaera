@@ -1,5 +1,6 @@
 #include "table.h"
 #include "hash_f.h"
+#include <fstream>
 #include <iostream>
 
 using namespace std;
@@ -183,14 +184,14 @@ void table::report_support(){
 
     reporting = loci[i].supporting_reads->head;
 
-    first_read = * reporting;
+    first_read = reporting->data;
 
     first_start_range = reporting->data.getPos();
     first_end_range = first_start_range + reporting->data.getLen();
 
     reporting = reporting->next;
 
-    second_read = *reporting;
+    second_read = reporting->data;
 
     second_start_range = reporting->data.getPos();
     second_end_range = first_start_range + reporting->data.getLen();
@@ -221,7 +222,7 @@ void table::report_support(){
 
       num_supp_reads++;
     }
-    report << "@" << num_supp_reads << "\t" << first_start_range << "-" << first_end_range << "\t" << second_start_range << "-" << second_end_range << "\n"
+    report << "@" << num_supp_reads << "\t" << first_start_range << "-" << first_end_range << "\t" << second_start_range << "-" << second_end_range << "\n";
   }
 report.close();
 }
