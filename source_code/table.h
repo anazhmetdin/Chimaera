@@ -19,6 +19,7 @@ public:
   bool found_matched(Node* first, Node* second);
   void check_support();
   vector<locus> loci;
+  void report_support();
 
 };
 
