@@ -7,10 +7,12 @@ locus::locus(Node* first, Node* second){
 
   first_start = first->data.getPos();
   first_end = first_start+first->data.getLen();
+  first_dir = first->data.getDir();
   first_Rname = first->data.getRname();
 
   second_start = second->data.getPos();;
   second_end = second_start+second->data.getLen();
+  second_dir = second->data.getDir();
   second_Rname = first->data.getRname();
 
   supporting_reads = new linked(first->data);
