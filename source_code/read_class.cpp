@@ -68,5 +68,5 @@ string read::getQuality(){return quality;}
 int read::getDir(){return dir;}
 
 string read::printRead(){
-  return this->Qname + "\t" + to_string(this->flag) + "\t" + this->Rname + "\t" + to_string(this->pos) + "\t" + to_string(this->mapQ) + "\t" + to_string(this->len) + "\n";
+  return this->Qname + "\t" + to_string(this->flag) + "\t" + this->Rname + "\t" + to_string(this->pos) + "\t" + to_string(this->mapQ) + "\t" + this->cigar + "\t" + this->Rname + "\t" + this->Rnext + "\t" + to_string(this->Pnext) + "\t" + to_string(this->len) + "\t" + this->seq + "\t" + this->quality + "\n";
 }
