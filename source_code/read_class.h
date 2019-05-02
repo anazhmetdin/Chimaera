@@ -30,6 +30,7 @@ public:
   int getMapQ();
   int getLen();
 
+  string printRead();
 
 };
 

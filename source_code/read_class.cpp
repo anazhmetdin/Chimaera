@@ -35,3 +35,7 @@ int read::getPos(){return pos;}
 int read::getMapQ(){return mapQ;}
 
 int read::getLen(){return len;}
+
+string read::printRead(){
+  return this->Qname + "\t" + this->flag + "\t" + this->Rname + "\t" + this->pos + "\t" + this->mapQ + "\t" + this->len + "\n";
+}
