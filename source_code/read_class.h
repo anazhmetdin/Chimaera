@@ -7,15 +7,20 @@ class read{
 
 private:
   string Qname;
-  string Rname;
   int flag;
+  string Rname;
   int pos;
   int mapQ;
+  string cigar;
+  string Rnext;
+  int Pnext;
   int len;
+  string seq;
+  string quality;
   int dir;
 
 public:
-  read(int dir=0,string Qname="*", string Rname="*", int flag=0, int pos=0, int len=0, int mapQ=255);
+  read(int dir=0,string Qname="*", int flag=0, string Rname="*", int pos=0, , int mapQ=255, string cigar="-", string Rnext="*", int Pnext=0, int len=0, string seq="*", string quality="*");
 
   void setQname(string);
   void setRname(string);
