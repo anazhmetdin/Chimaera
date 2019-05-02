@@ -96,7 +96,7 @@ void table::check_support(){
 
           while(temp != NULL){
 
-            if( temp->data.getRname() == match->first_Rname && match_first == nullptr){
+            if( temp->data.getRname() == match->first_Rname && match_first == nullptr && temp->data.getDir() == match->first_dir){
 
               if( temp->data.getPos() <=  match->first_end - 20 && temp->data.getPos() + temp->data.getLen() > match->first_end ){
                 match_first = temp;
@@ -121,7 +121,7 @@ void table::check_support(){
 
             }
 
-            else if( temp->data.getRname() == match->second_Rname && match_second == nullptr){
+            else if( temp->data.getRname() == match->second_Rname && match_second == nullptr && temp->data.getDir() == match->second_dir){
               if( temp->data.getPos() <=  match->second_end - 20 && temp->data.getPos() + temp->data.getLen() > match->second_end ){
                 match_second = temp;
                 temp = temp->next;
