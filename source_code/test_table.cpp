@@ -39,8 +39,15 @@ int main(){
 
   whtevrT.check_support();
   cout << whtevrT.loci.size() << '\n';
+  Node* view;
   for(int i=0; i<whtevrT.loci.size(); i++){
-    cout<<whtevrT.loci[i].supporting_reads->head->next->data.getPos()<<endl;
+    view = whtevrT.loci[i].supporting_reads->head;
+    while(view!=NULL){
+    cout<<view->data.getQname()<<endl;
+    cout<<view->data.getPos()<<endl;
+    cout<<i<<endl;
+    view = view->next;
+  }
   }
 
 }

@@ -95,30 +95,24 @@ void table::check_support(){
 
           while(temp != NULL){
 
-            if(match_first != nullptr && match_second != nullptr){
-              match->supporting_reads->addToTail(match_first->data);
-              match->supporting_reads->addToTail(match_second->data);
-              break;
-            }
-
-            if( temp->data.getQname() == match->first_Rname){
+            if( temp->data.getRname() == match->first_Rname && match_first == nullptr){
 
               if( temp->data.getPos() <=  match->first_end - 20 && temp->data.getPos() + temp->data.getLen() > match->first_end ){
                 match_first = temp;
                 temp = temp->next;
                 continue;
               }
-              if( temp->data.getPos() > match->first_start && temp->data.getPos() + temp->data.getLen() < match->first_end && temp->data.getLen() >= 21){
+              else if( temp->data.getPos() >= match->first_start && temp->data.getPos() + temp->data.getLen() <= match->first_end && temp->data.getLen() >= 21){
                 match_first = temp;
                 temp = temp->next;
                 continue;
               }
-              if( temp->data.getPos() <= match->first_start && temp->data.getPos() + temp->data.getLen() > match->first_start + 20){
+              else if( temp->data.getPos() < match->first_start && temp->data.getPos() + temp->data.getLen() > match->first_start + 20){
                 match_first = temp;
                 temp = temp->next;
                 continue;
               }
-              if( temp->data.getPos() < match->first_start && temp->data.getPos() + temp->data.getLen() > match->first_end && match->first_end - match->first_start >= 20){
+              else if( temp->data.getPos() < match->first_start && temp->data.getPos() + temp->data.getLen() > match->first_end && match->first_end - match->first_start >= 20){
                 match_first = temp;
                 temp = temp->next;
                 continue;
@@ -126,31 +120,35 @@ void table::check_support(){
 
             }
 
-            if( temp->data.getQname() == match->second_Rname){
-
+            else if( temp->data.getRname() == match->second_Rname && match_second == nullptr){
               if( temp->data.getPos() <=  match->second_end - 20 && temp->data.getPos() + temp->data.getLen() > match->second_end ){
                 match_second = temp;
                 temp = temp->next;
                 continue;
               }
-              if( temp->data.getPos() > match->second_start && temp->data.getPos() + temp->data.getLen() < match->second_end && temp->data.getLen() >= 21){
+              else if( temp->data.getPos() >= match->second_start && temp->data.getPos() + temp->data.getLen() <= match->second_end && temp->data.getLen() >= 21){
                 match_second = temp;
                 temp = temp->next;
                 continue;
               }
-              if( temp->data.getPos() <= match->second_start && temp->data.getPos() + temp->data.getLen() > match->second_start + 20){
+              else if( temp->data.getPos() < match->second_start && temp->data.getPos() + temp->data.getLen() > match->second_start + 20){
                 match_second = temp;
                 temp = temp->next;
                 continue;
               }
-              if( temp->data.getPos() < match->second_start && temp->data.getPos() + temp->data.getLen() > match->second_end && match->second_end - match->second_start >= 20){
+              else if( temp->data.getPos() < match->second_start && temp->data.getPos() + temp->data.getLen() > match->second_end && match->second_end - match->second_start >= 20){
                 match_second = temp;
                 temp = temp->next;
                 continue;
               }
             }
             temp = temp->next;
-          }
+            }
+
+            if(match_first != nullptr && match_second != nullptr){
+              match->supporting_reads->addToTail(match_first->data);
+              match->supporting_reads->addToTail(match_second->data);
+            }
         }
         loci.push_back(*match);
         second = second->next;
