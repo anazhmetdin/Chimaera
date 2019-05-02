@@ -40,7 +40,7 @@ int read::getMapQ(){return mapQ;}
 
 int read::getLen(){return len;}
 
-int read::getdir(){return dir;}
+int read::getDir(){return dir;}
 
 string read::printRead(){
   return this->Qname + "\t" + to_string(this->flag) + "\t" + this->Rname + "\t" + to_string(this->pos) + "\t" + to_string(this->mapQ) + "\t" + to_string(this->len) + "\n";

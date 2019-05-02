@@ -197,8 +197,8 @@ void table::report_support(){
     second_end_range = first_start_range + reporting->data.getLen();
 
 
-    report << ">>" << first_read.getRname() << "\t" << first_start_range << "\t" << first_end_range << "\n";
-    report << ">>" << second_read.getRname() << "\t" << second_start_range << "\t" << second_end_range << "\n";
+    report << ">>" << first_read.getRname() << "\t" << first_read.getDir() << "\t" << first_start_range << "\t" << first_end_range << "\n";
+    report << ">>" << second_read.getRname() << "\t" << second_read.getDir() << "\t" << second_start_range << "\t" << second_end_range << "\n";
 
     report << first_read.printRead();
     report << second_read.printRead();
