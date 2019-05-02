@@ -5,10 +5,11 @@
 #include "table.h"
 using namespace std;
 
+
 read store_read(string line);
 
-int main(int argc, char** argv){
 
+int main(int argc, char** argv){
 
 ifstream test_file(argv[1], ios::in);
 
@@ -49,21 +50,24 @@ read store_read(string line){
       token = line.substr(0, pos);
 
       if(field_counter==0){
-        dump_read.setQname(token);
+        dump_read.setDir(stoi(token));
       }
       else if(field_counter==1){
-        dump_read.setFlag(stoi(token));
+        dump_read.setQname(token);
       }
       else if(field_counter==2){
-        dump_read.setRname(token);
+        dump_read.setFlag(stoi(token));
       }
       else if(field_counter==3){
-        dump_read.setPos(stoi(token));
+        dump_read.setRname(token);
       }
       else if(field_counter==4){
-        dump_read.setMapQ(stoi(token));
+        dump_read.setPos(stoi(token));
       }
       else if(field_counter==5){
+        dump_read.setMapQ(stoi(token));
+      }
+      else if(field_counter==6){
         dump_read.setLen(stoi(token));
         break;
       }
