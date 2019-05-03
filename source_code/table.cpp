@@ -174,6 +174,10 @@ void table::report_support(){
   int second_start_range;
   int second_end_range;
   int num_supp_reads;
+  int minimum_limit;
+  cout << "what is the minimum number of supporting reads? ";
+  cin >> minimum_limit;
+
 
   ofstream report("./pipline_run/supported_loci.txt",ios::app);
 
@@ -221,8 +225,9 @@ void table::report_support(){
 
       num_supp_reads++;
     }
-    report << "@" << num_supp_reads << "\t" << first_start_range << "-" << first_end_range << "\t" << second_start_range << "-" << second_end_range << "\n";
-    report << supporting_lines;
+    if(num_supp_reads >= minimum_limit){
+      report << "@" << num_supp_reads << "\t" << first_start_range << "-" << first_end_range << "\t" << second_start_range << "-" << second_end_range << "\n";
+      report << supporting_lines;}
   }
 report.close();
 }
