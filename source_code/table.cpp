@@ -196,12 +196,11 @@ void table::report_support(){
     second_start_range = reporting->data.getPos();
     second_end_range = first_start_range + reporting->data.getLen();
 
-
-    report << ">>" << first_read.getRname() << "\t" << first_read.getDir() << "\t" << first_start_range << "\t" << first_end_range << "\n";
-    report << ">>" << second_read.getRname() << "\t" << second_read.getDir() << "\t" << second_start_range << "\t" << second_end_range << "\n";
-
-    report << first_read.printRead();
-    report << second_read.printRead();
+    string supporting_lines="";
+    supporting_lines = supporting_lines + ">>" + first_read.getRname() + "\t" + to_string(first_read.getDir()) + "\n";
+    supporting_lines = supporting_lines + ">>" + second_read.getRname() + "\t" + to_string(second_read.getDir()) + "\n";
+    supporting_lines = supporting_lines + first_read.printRead();
+    supporting_lines = supporting_lines + second_read.printRead();
 
     num_supp_reads = 1;
 
@@ -211,18 +210,19 @@ void table::report_support(){
       first_start_range = min(reporting->data.getPos(),first_start_range);
       first_end_range = max(reporting->data.getPos()+reporting->data.getLen(),first_start_range);
 
-      report << reporting->data.printRead();
+      supporting_lines = supporting_lines + reporting->data.printRead();
       reporting = reporting->next;
 
       second_start_range = min(reporting->data.getPos(),second_start_range);
       second_end_range = max(reporting->data.getPos()+reporting->data.getLen(),second_start_range);
 
-      report << reporting->data.printRead();
+      supporting_lines = supporting_lines + reporting->data.printRead();
       reporting = reporting->next;
 
       num_supp_reads++;
     }
     report << "@" << num_supp_reads << "\t" << first_start_range << "-" << first_end_range << "\t" << second_start_range << "-" << second_end_range << "\n";
+    report << supporting_lines;
   }
 report.close();
 }
