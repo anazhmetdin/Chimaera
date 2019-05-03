@@ -3,7 +3,7 @@
 
 using namespace std;
 
-read::read(int dir,string Qname, int flag, string Rname, int pos, int mapQ, string cigar, string Rnext, int Pnext, int len, string seq, string quality){
+read::read(int dir,string Qname, int flag, string Rname, int pos, int mapQ, string cigar, string Rnext, int Pnext, int len, string seq, string quality, string tag){
   this->dir = dir;
   this->Qname = Qname;
   this->flag = flag;
@@ -16,6 +16,7 @@ read::read(int dir,string Qname, int flag, string Rname, int pos, int mapQ, stri
   this->len = len;
   this->seq = seq;
   this->quality = quality;
+  this->tag;
 }
 
 void read::setQname(string Qname){this->Qname = Qname;}
@@ -42,6 +43,8 @@ void read::setQuality(string quality){this->quality = quality;}
 
 void read::setDir(int dir){this->dir = dir;}
 
+void read::setTag(string tag){this->tag = tag;}
+
 
 string read::getQname(){return Qname;}
 
@@ -67,6 +70,8 @@ string read::getQuality(){return quality;}
 
 int read::getDir(){return dir;}
 
+string read::getTag(){return tag;}
+
 string read::printRead(){
-  return this->Qname + "\t" + to_string(this->flag) + "\t" + this->Rname + "\t" + to_string(this->pos) + "\t" + to_string(this->mapQ) + "\t" + this->cigar + "\t" + this->Rname + "\t" + this->Rnext + "\t" + to_string(this->Pnext) + "\t" + to_string(this->len) + "\t" + this->seq + "\t" + this->quality + "\n";
+  return this->Qname + "\t" + to_string(this->flag) + "\t" + this->Rname + "\t" + to_string(this->pos) + "\t" + to_string(this->mapQ) + "\t" + this->cigar + "\t" + this->Rname + "\t" + this->Rnext + "\t" + to_string(this->Pnext) + "\t" + to_string(this->len) + "\t" + this->seq + "\t" + this->quality + "\t" + this->tag + "\n";
 }

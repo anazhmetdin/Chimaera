@@ -88,6 +88,8 @@ read store_read(string line){
       }
       else if(field_counter==11){
         dump_read.setQuality(token);
+        line.erase(0, pos + delimiter.length());
+        dump_read.setTag(line);
       }
 
       line.erase(0, pos + delimiter.length());
