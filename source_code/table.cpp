@@ -82,7 +82,11 @@ void table::check_support(){
 
       while(second != NULL){
 
-        if( found_matched(first,second) ){
+        if(first->data.getPos()==second->data.getPnext() || second->data.getPos()==first->data.getPnext()){
+          second = second->next;
+          continue;
+        }
+        else if( found_matched(first,second) ){
           second = second->next;
           continue;
         }
