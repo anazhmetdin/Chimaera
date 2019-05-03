@@ -17,12 +17,7 @@ echo done directed
 ./extract_chim_reads.sh ./pipline_run/directed_reads.sam -> ./pipline_run/filtered_chim_reads.sam
 echo done chim
 
-./extract_needed_fields.sh ./pipline_run/filtered_chim_reads.sam -> ./pipline_run/short_lines.sam
-echo done needed
-
-mv ./pipline_run/short_lines.sam ./pipline_run/short_lines1.sam 2> ./pipline_run/no_files.txt
-head -n 20000 ./pipline_run/short_lines1.sam > ./pipline_run/short_lines.sam
-rm ./pipline_run/short_lines1.sam 2> ./pipline_run/no_files.txt
+head -n 20000 ./pipline_run/filtered_chim_reads.sam > ./pipline_run/short_lines.sam
 
 echo Do you want to build a new hash_function?
 echo [y/n]?
