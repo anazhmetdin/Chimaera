@@ -175,7 +175,7 @@ void table::report_support(){
   int second_end_range;
   int num_supp_reads;
 
-  ofstream report("./pipline_run/suppprted_loci.txt",ios::app);
+  ofstream report("./pipline_run/supported_loci.txt",ios::app);
 
   if (report.is_open()) {
 
