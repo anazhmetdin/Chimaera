@@ -72,8 +72,22 @@ read store_read(string line){
         dump_read.setMapQ(stoi(token));
       }
       else if(field_counter==6){
+        dump_read.setCigar(token);
+      }
+      else if(field_counter==7){
+        dump_read.setRnext(token);
+      }
+      else if(field_counter==8){
+        dump_read.setPnext(stoi(token));
+      }
+      else if(field_counter==9){
         dump_read.setLen(stoi(token));
-        break;
+      }
+      else if(field_counter==10){
+        dump_read.setSeq(token);
+      }
+      else if(field_counter==11){
+        dump_read.setQuality(token);
       }
 
       line.erase(0, pos + delimiter.length());
