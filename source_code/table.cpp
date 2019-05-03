@@ -66,6 +66,9 @@ void table::check_support(){
   Node* first;
   Node* second;
   locus* match;
+  int maximum_limit;
+  cout << "what is the maximim limit of distance between reads? ";
+  cin >> maximum_limit;
 
   for(int i=0; i<size-1; i++){
 
@@ -98,23 +101,17 @@ void table::check_support(){
 
             if( temp->data.getRname() == match->first_Rname && match_first == nullptr && temp->data.getDir() == match->first_dir){
 
-              if( temp->data.getPos() <=  match->first_end - 20 && temp->data.getPos() + temp->data.getLen() > match->first_end ){
+              if( temp->data.getPos() <=  match->first_end + maximum_limit && temp->data.getPos() + temp->data.getLen() >= match->first_start ){
                 match_first = temp;
+                match->first_start = min(temp->data.getPos(),match->first_start);
+                match->first_end = max(temp->data.getPos() + temp->data.getLen(),match->first_end);
                 temp = temp->next;
                 continue;
               }
-              else if( temp->data.getPos() >= match->first_start && temp->data.getPos() + temp->data.getLen() <= match->first_end && temp->data.getLen() >= 21){
+              else if( temp->data.getPos() + temp->data.getLen() >= match->first_start - maximum_limit && temp->data.getPos() + temp->data.getLen() <= match->first_start ){
                 match_first = temp;
-                temp = temp->next;
-                continue;
-              }
-              else if( temp->data.getPos() < match->first_start && temp->data.getPos() + temp->data.getLen() > match->first_start + 20){
-                match_first = temp;
-                temp = temp->next;
-                continue;
-              }
-              else if( temp->data.getPos() < match->first_start && temp->data.getPos() + temp->data.getLen() > match->first_end && match->first_end - match->first_start >= 20){
-                match_first = temp;
+                match->first_start = min(temp->data.getPos(),match->first_start);
+                match->first_end = max(temp->data.getPos() + temp->data.getLen(),match->first_end);
                 temp = temp->next;
                 continue;
               }
@@ -122,23 +119,18 @@ void table::check_support(){
             }
 
             else if( temp->data.getRname() == match->second_Rname && match_second == nullptr && temp->data.getDir() == match->second_dir){
-              if( temp->data.getPos() <=  match->second_end - 20 && temp->data.getPos() + temp->data.getLen() > match->second_end ){
+
+              if( temp->data.getPos() <=  match->second_end + maximum_limit && temp->data.getPos() + temp->data.getLen() >= match->second_start ){
                 match_second = temp;
+                match->second_start = min(temp->data.getPos(),match->second_start);
+                match->second_end = max(temp->data.getPos() + temp->data.getLen(),match->second_end);
                 temp = temp->next;
                 continue;
               }
-              else if( temp->data.getPos() >= match->second_start && temp->data.getPos() + temp->data.getLen() <= match->second_end && temp->data.getLen() >= 21){
+              else if( temp->data.getPos() + temp->data.getLen() >= match->second_start - maximum_limit && temp->data.getPos() + temp->data.getLen() <= match->second_start ){
                 match_second = temp;
-                temp = temp->next;
-                continue;
-              }
-              else if( temp->data.getPos() < match->second_start && temp->data.getPos() + temp->data.getLen() > match->second_start + 20){
-                match_second = temp;
-                temp = temp->next;
-                continue;
-              }
-              else if( temp->data.getPos() < match->second_start && temp->data.getPos() + temp->data.getLen() > match->second_end && match->second_end - match->second_start >= 20){
-                match_second = temp;
+                match->second_start = min(temp->data.getPos(),match->second_start);
+                match->second_end = max(temp->data.getPos() + temp->data.getLen(),match->second_end);
                 temp = temp->next;
                 continue;
               }
