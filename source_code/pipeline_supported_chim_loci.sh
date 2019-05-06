@@ -12,7 +12,7 @@ rm ./pipline_run/supported_loci.txt 2> ./pipline_run/no_files.txt
 awk 'BEGIN{FS=OFS="\t"} {if($0 ~ /^[^@]/) print $0 OFS "SA:Z:2"; else print $0}' $1 > ./pipline_run/tagged_chim.sam 2> ./pipline_run/corrupted_file.txt
 echo done tagging
 # store reads that have the chimeric alignment tag in a separate file
-./extract_chim_reads.sh ./pipline_run/tagged_chim.sam  -> ./pipline_run/filtered_chim_reads.sam 2> ./pipline_run/corrupted_file.txt
+./extract_chim_reads.sh ./pipline_run/tagged_chim.sam  > ./pipline_run/filtered_chim_reads.sam 2> ./pipline_run/corrupted_file.txt
 echo done chim
 # select the range of the input
 head -n 20000 ./pipline_run/filtered_chim_reads.sam > ./pipline_run/short_lines.sam 2> ./pipline_run/corrupted_file.txt
