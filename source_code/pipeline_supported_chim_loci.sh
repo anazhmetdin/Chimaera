@@ -12,21 +12,14 @@ rm ./pipline_run/supported_loci.txt 2> ./pipline_run/no_files.txt
 awk 'BEGIN{FS=OFS="\t"} {if($0 ~ /^[^@]/) print $0 OFS "SA:Z:2"; else print $0}' $1 > ./pipline_run/tagged_chim.sam 2> ./pipline_run/corrupted_file.txt
 echo done tagging
 # store reads that have the chimeric alignment tag in a separate file
-<<<<<<< HEAD
 ./extract_chim_reads.sh ./pipline_run/tagged_chim.sam  > ./pipline_run/filtered_chim_reads.sam 2> ./pipline_run/corrupted_file.txt
-=======
-./extract_chim_reads.sh ./pipline_run/tagged_chim.sam  -> ./pipline_run/filtered_chim_reads.sam 2> ./pipline_run/corrupted_file.txt
->>>>>>> e4ac9780724fed324d4b3be1414bc7c1ecab1950
 echo done chim
 # select the range of the input
 head -n 20000 ./pipline_run/filtered_chim_reads.sam > ./pipline_run/short_lines.sam 2> ./pipline_run/corrupted_file.txt
 # add direaction to each read before the Qname:
 # 0 for forward alignment
 # 1 for reverse alignment
-<<<<<<< HEAD
 # !!!Disclaimer!!! the output file doesn't have headers
-=======
->>>>>>> e4ac9780724fed324d4b3be1414bc7c1ecab1950
 ./add_field_direction.sh ./pipline_run/short_lines.sam 2> ./pipline_run/corrupted_file.txt
 echo done directed
 mv ./directed_reads.sam ./pipline_run/directed_reads.sam 2> ./pipline_run/no_files.txt
@@ -40,13 +33,8 @@ echo [y/n]?
 read option
 if [ $option == 'y' ]
 then
-<<<<<<< HEAD
   # build a new hash_f.h that stores the information of the perfect hashing
   # function for the input data
-=======
-  # build a new hash_f.h that stores the information of the perfect hashing function
-  # for the input data
->>>>>>> e4ac9780724fed324d4b3be1414bc7c1ecab1950
   ./build_hash_f.sh ./pipline_run/directed_reads.sam 2> ./pipline_run/corrupted_file.txt
   rm ./sup_reads_hash_function.gperf 2> ./pipline_run/no_files.txt
   # enable public access to the hashing function
