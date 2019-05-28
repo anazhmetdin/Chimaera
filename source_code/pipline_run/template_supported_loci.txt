@@ -1,0 +1,18 @@
+@$num_supporting_reads	$pos_1st_locus-$end_pos_1st_locus	$pos_2nd_locus-$end_pos_2nd_locus
+>>$1st_reference_name $1st_locus_direction
+>>$2nd_reference_name $2nd_locus_direction
+$read_line_supporting_1st_locus
+$read_line_supporting_2nd_locus
+$read_line_supporting_1st_locus
+$read_line_supporting_2nd_locus
+$read_line_supporting_1st_locus
+$read_line_supporting_2nd_locus
+@$num_supporting_reads	$pos_1st_locus-$end_pos_1st_locus	$pos_2nd_locus-$end_pos_2nd_locus
+>>$1st_reference_name $1st_locus_direction
+>>$2nd_reference_name $2nd_locus_direction
+$read_line_supporting_1st_locus
+$read_line_supporting_2nd_locus
+$read_line_supporting_1st_locus
+$read_line_supporting_2nd_locus
+$read_line_supporting_1st_locus
+$read_line_supporting_2nd_locus
