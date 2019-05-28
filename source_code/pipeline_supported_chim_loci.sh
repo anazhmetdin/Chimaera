@@ -7,13 +7,9 @@
 rm ./pipline_run/directed_reads.sam 2> ./pipline_run/no_files.txt
 rm ./pipline_run/filtered_chim_reads.sam 2> ./pipline_run/no_files.txt
 rm ./pipline_run/supported_loci.txt 2> ./pipline_run/no_files.txt
-# adding the chimeric alignment tag to each line
-# should be deleted in the final version
-awk 'BEGIN{FS=OFS="\t"} {if($0 ~ /^[^@]/) print $0 OFS "SA:Z:2"; else print $0}' $1 > ./pipline_run/tagged_chim.sam 2> ./pipline_run/corrupted_file.txt
-echo done tagging
 # store reads that have the chimeric alignment tag in a separate file
-./extract_chim_reads.sh ./pipline_run/tagged_chim.sam  > ./pipline_run/filtered_chim_reads.sam 2> ./pipline_run/corrupted_file.txt
-echo done chim
+./extract_chim_reads.sh $1 > ./pipline_run/filtered_chim_reads.sam 2> ./pipline_run/corrupted_file.txt
+echo done extracting chimeric reads
 # select the range of the input
 head -n 20000 ./pipline_run/filtered_chim_reads.sam > ./pipline_run/short_lines.sam 2> ./pipline_run/corrupted_file.txt
 # add direaction to each read before the Qname:
@@ -21,7 +17,7 @@ head -n 20000 ./pipline_run/filtered_chim_reads.sam > ./pipline_run/short_lines.
 # 1 for reverse alignment
 # !!!Disclaimer!!! the output file doesn't have headers
 ./add_field_direction.sh ./pipline_run/short_lines.sam 2> ./pipline_run/corrupted_file.txt
-echo done directed
+echo done adding direction
 mv ./directed_reads.sam ./pipline_run/directed_reads.sam 2> ./pipline_run/no_files.txt
 # ask the user to build a new hashing function or not
 # if you have ran this exact sample in the previous run:
