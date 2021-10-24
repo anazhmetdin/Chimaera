@@ -10,13 +10,11 @@ rm ./pipline_run/supported_loci.txt 2> ./pipline_run/no_files.txt
 # store reads that have the chimeric alignment tag in a separate file
 ./extract_chim_reads.sh $1 > ./pipline_run/filtered_chim_reads.sam 2> ./pipline_run/corrupted_file.txt
 echo done extracting chimeric reads
-# select the range of the input
-head -n 20000 ./pipline_run/filtered_chim_reads.sam > ./pipline_run/short_lines.sam 2> ./pipline_run/corrupted_file.txt
 # add direaction to each read before the Qname:
 # 0 for forward alignment
 # 1 for reverse alignment
 # !!!Disclaimer!!! the output file doesn't have headers
-./add_field_direction.sh ./pipline_run/short_lines.sam 2> ./pipline_run/corrupted_file.txt
+./add_field_direction.sh ./pipline_run/filtered_chim_reads.sam 2> ./pipline_run/corrupted_file.txt
 echo done adding direction
 mv ./directed_reads.sam ./pipline_run/directed_reads.sam 2> ./pipline_run/no_files.txt
 # ask the user to build a new hashing function or not
